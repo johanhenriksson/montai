@@ -38,11 +38,12 @@ func IsContainer() bool {
 func Run() {
 	fmt.Println("montai cli")
 
-	root := "/montai"
+	root := "/mnt/montai"
 
+	// setup
 	b, _ := exec.Command(
 		"docker", "run", "--rm", "--privileged", "--pid=host",
-		imageName, "sh", "osxfix.sh", root).Output()
+		imageName, "sh", "install.sh", root).Output()
 	fmt.Println(string(b))
 
 	docker, err := client.NewEnvClient()
